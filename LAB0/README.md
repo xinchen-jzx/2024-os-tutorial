@@ -16,10 +16,14 @@ sudo apt-get install git build-essential gdb-multiarch qemu-system-misc gcc-risc
 
 ## 0.3 下载实验框架代码
 
+本课程所有实验都托管在同一个仓库中。
 ```bash
 # 克隆代码
 git clone https://gitee.com/xinchen-boom/os-labs-2024.git
+```
 
+获得框架代码后，将会克隆`os-labs-2024`到当前目录。首次`clone`后你会得到一个近乎为空的Git repo：
+```bash
 # 切换分支，如果发现为空不要紧张！切换git分支即可
 git checkout <branch-name>
 ```
