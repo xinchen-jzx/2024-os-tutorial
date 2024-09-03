@@ -264,7 +264,25 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="lab0-&#x5B9E;&#x9A8C;&#x73AF;&#x5883;&#x642D;&#x5EFA;">Lab0: &#x5B9E;&#x9A8C;&#x73AF;&#x5883;&#x642D;&#x5EFA;</h1>
+<h2 id="01-&#x9884;&#x5907;&#x64CD;&#x4F5C;">0.1 &#x9884;&#x5907;&#x64CD;&#x4F5C;</h2>
+<p>&#x5B98;&#x65B9;&#x6E90;&#x4E0B;&#x8F7D;&#x76F8;&#x5173;&#x4F9D;&#x8D56;&#x9879;&#x8F83;&#x6162;&#xFF0C;&#x5EFA;&#x8BAE;&#x66F4;&#x6362;&#x4E3A;&#x6E05;&#x534E;&#x6E90;&#x7B49;&#x56FD;&#x5185;&#x6E90;&#x3002;</p>
+<pre><code class="lang-bash">sudo apt-get update &amp;&amp; sudo apt-get upgrade   <span class="hljs-comment"># &#x66F4;&#x65B0;&#x8F6F;&#x4EF6;&#x5217;&#x8868;</span>
+</code></pre>
+<h2 id="02-&#x5B89;&#x88C5;&#x7F16;&#x8BD1;&#x5668;&#x548C;qemu&#x6A21;&#x62DF;&#x5668;">0.2 &#x5B89;&#x88C5;&#x7F16;&#x8BD1;&#x5668;&#x548C;QEMU&#x6A21;&#x62DF;&#x5668;</h2>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x5B89;&#x88C5;&#x5DE5;&#x5177;&#x94FE;</span>
+sudo apt-get install git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu
+</code></pre>
+<h2 id="03-&#x4E0B;&#x8F7D;&#x5B9E;&#x9A8C;&#x6846;&#x67B6;&#x4EE3;&#x7801;">0.3 &#x4E0B;&#x8F7D;&#x5B9E;&#x9A8C;&#x6846;&#x67B6;&#x4EE3;&#x7801;</h2>
+<p>&#x672C;&#x8BFE;&#x7A0B;&#x6240;&#x6709;&#x5B9E;&#x9A8C;&#x90FD;&#x6258;&#x7BA1;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x4ED3;&#x5E93;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x514B;&#x9686;&#x4EE3;&#x7801;</span>
+git <span class="hljs-built_in">clone</span> https://gitee.com/xinchen-boom/os-labs-2024.git
+</code></pre>
+<p>&#x83B7;&#x5F97;&#x6846;&#x67B6;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x5C06;&#x4F1A;&#x514B;&#x9686;<code>os-labs-2024</code>&#x5230;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x3002;&#x9996;&#x6B21;<code>clone</code>&#x540E;&#x4F60;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x8FD1;&#x4E4E;&#x4E3A;&#x7A7A;&#x7684;Git repo&#xFF1A;</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x5207;&#x6362;&#x5206;&#x652F;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x4E3A;&#x7A7A;&#x4E0D;&#x8981;&#x7D27;&#x5F20;&#xFF01;&#x5207;&#x6362;git&#x5206;&#x652F;&#x5373;&#x53EF;</span>
+git checkout &lt;branch-name&gt;
+</code></pre>
+
                                 
                                 </section>
                             
@@ -307,7 +325,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LAB0","level":"1.5","depth":1,"next":{"title":"LAB1","level":"1.6","depth":1,"path":"LAB1/README.md","ref":"./LAB1/README.md","articles":[]},"previous":{"title":"2025年全国大学生计算机系统能力大赛操作系统设计赛","level":"1.4","depth":1,"path":"4_competition.md","ref":"4_competition.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"LAB0/README.md","mtime":"2024-07-27T13:45:32.743Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-08-13T03:28:49.299Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LAB0","level":"1.5","depth":1,"next":{"title":"LAB1","level":"1.6","depth":1,"path":"LAB1/README.md","ref":"./LAB1/README.md","articles":[]},"previous":{"title":"2025年全国大学生计算机系统能力大赛操作系统设计赛","level":"1.4","depth":1,"path":"4_competition.md","ref":"4_competition.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"LAB0/README.md","mtime":"2024-09-03T10:07:39.699Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-03T10:11:11.417Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
