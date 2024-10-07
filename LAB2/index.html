@@ -264,7 +264,109 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="lab2-system-calls">Lab2: System Calls</h1>
+<h2 id="1-&#x5B9E;&#x9A8C;&#x76EE;&#x7684;">1. &#x5B9E;&#x9A8C;&#x76EE;&#x7684;</h2>
+<p>&#x672C;&#x8282;&#x5B9E;&#x9A8C;&#x7684;&#x76EE;&#x7684;&#x662F;&#x5BF9;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6A21;&#x5757;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#xFF0C;&#x5C3D;&#x53EF;&#x80FD;&#x5728;&#x771F;&#x6B63;&#x4FEE;&#x6539;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x5BF9;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6709;&#x4E00;&#x5B9A;&#x7684;&#x4E86;&#x89E3;&#x3002;</p>
+<ol>
+<li>&#x4E86;&#x89E3;&#x6211;&#x4EEC;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1B;</li>
+<li>&#x719F;&#x6089;&#x6211;&#x4EEC;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7ED9;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x7684;&#x673A;&#x5236;&#x3002;</li>
+</ol>
+<h2 id="2-&#x5B9E;&#x9A8C;&#x5185;&#x5BB9;&#x53CA;&#x8981;&#x6C42;">2. &#x5B9E;&#x9A8C;&#x5185;&#x5BB9;&#x53CA;&#x8981;&#x6C42;</h2>
+<h3 id="21-&#x4EFB;&#x52A1;1-&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4FE1;&#x606F;&#x6253;&#x5370;">2.1 &#x4EFB;&#x52A1;1: &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4FE1;&#x606F;&#x6253;&#x5370;</h3>
+<p>&#x5728;&#x8BE5;&#x4EFB;&#x52A1;&#x4E2D;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x52A0;&#x5165;&#x5177;&#x6709;&#x8DDF;&#x8E2A;&#x529F;&#x80FD;&#x7684;<code>trace</code>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x6253;&#x5370;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4FE1;&#x606F;&#xFF0C;&#x6765;&#x5E2E;&#x52A9;&#x4F60;&#x5728;&#x4E4B;&#x540E;&#x7684;&#x5B9E;&#x9A8C;&#x4E2D;&#x8FDB;&#x884C;debug&#x3002;</p>
+<p><b>&#x5177;&#x4F53;&#x8981;&#x6C42;&#xFF1A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;trace&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;</b></p>
+<h4 id="211-&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;">2.1.1 &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;</h4>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">trace</span><span class="hljs-params">(<span class="hljs-keyword">int</span> mask)</span></span>;
+</code></pre>
+<ol>
+<li><b>&#x53C2;&#x6570;<code>mask</code></b>&#xFF1A;&#x6BCF;&#x4E00;&#x4F4D;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x4F4D;&#x7684;&#x6BD4;&#x7279;&#x503C;&#x4E0E;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7F16;&#x53F7;&#x76F8;&#x5BF9;&#x5E94;&#xFF0C;&#x6307;&#x793A;&#x662F;&#x5426;&#x9700;&#x8981;&#x8FFD;&#x8E2A;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;<ol>
+<li>&#x5982;&#x8C03;&#x7528;<code>trace(1 &lt;&lt; SYS_fork)</code>&#xFF0C;&#x5219;&#x4EE3;&#x8868;&#x53EA;&#x8FFD;&#x8E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;<code>fork</code>&#xFF0C;&#x5176;&#x4E2D;<code>SYS_fork</code>&#x662F;&#x5728;&#x6587;&#x4EF6;<code>kernel/syscall.h</code>&#x4E2D;&#x5B9A;&#x4E49;&#x7684;<code>fork</code>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x7F16;&#x53F7;&#x3002;</li>
+<li>&#x5982;&#x8C03;&#x7528;<code>trace(0xffffffff)</code>&#xFF0C;&#x5219;&#x4EE3;&#x8868;&#x8FFD;&#x8E2A;&#x6240;&#x6709;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;</li>
+</ol>
+</li>
+<li><b>&#x8FD4;&#x56DE;&#x503C;</b>&#xFF1A;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x8FD4;&#x56DE;0&#xFF0C;&#x5F02;&#x5E38;&#x8FD4;&#x56DE;-1&#x3002;</li>
+<li><b>&#x529F;&#x80FD;</b>&#xFF1A;&#x8BBE;&#x7F6E;&#x8BE5;&#x7A0B;&#x5E8F;&#x7684;<code>mask</code>&#x3002;<ol>
+<li>&#x8BBE;&#x7F6E;<code>mask</code>&#x4E4B;&#x540E;&#xFF0C;&#x5185;&#x6838;<b>&#x6BCF;&#x5904;&#x7406;&#x5B8C;&#x4E00;&#x6B21;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x540E;</b>&#xFF0C;&#x5373;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x524D;&#xFF0C;&#x82E5;<code>mask</code>&#x6307;&#x793A;&#x4E86;&#x8BE5;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x5219;&#x6253;&#x5370;&#x5BF9;&#x5E94;&#x4FE1;&#x606F;&#x3002;</li>
+<li>&#x6253;&#x5370;&#x683C;&#x5F0F;&#xFF1A;<code>PID: sys_$name(arg0) -&gt; return_value</code>&#x3002;<ul>
+<li>&#x5176;&#x4E2D;<code>$name</code>&#x4E3A;&#x9700;&#x8981;&#x8FFD;&#x8E2A;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x540D;&#x79F0;&#xFF1B;<code>arg0</code>&#x4E3A;&#x9700;&#x8981;&#x8FFD;&#x8E2A;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;<code>return_value</code>&#x4E3A;&#x9700;&#x8981;&#x8FFD;&#x8E2A;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4EE5;&#x5341;&#x8FDB;&#x5236;&#x578B;&#x6253;&#x5370;&#x3002;</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="212-&#x8FD0;&#x884C;&#x7ED3;&#x679C;">2.1.2 &#x8FD0;&#x884C;&#x7ED3;&#x679C;</h4>
+<p>&#x5B9E;&#x9A8C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;<code>trace</code>&#xFF08;&#x89C1;&#x6587;&#x4EF6;<code>user/trace.c</code>&#xFF09;&#x7528;&#x6237;&#x7EA7;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x8BE5;&#x7A0B;&#x5E8F;&#x9996;&#x5148;&#x901A;&#x8FC7;<code>trace</code>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8BBE;&#x7F6E;&#x9700;&#x8981;&#x8DDF;&#x8E2A;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x542F;&#x52A8;&#x53E6;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x6253;&#x5370;&#x51FA;&#x8BE5;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x6307;&#x5B9A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<blockquote>
+<p>&#x63D0;&#x793A;&#xFF1A;&#x540C;&#x5B66;&#x4EEC;&#x4E0D;&#x8981;&#x4FEE;&#x6539;<code>user/trace,c</code>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5B83;&#x53EA;&#x662F;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;<code>trace</code>&#x3002;</p>
+</blockquote>
+<p>&#x5728;&#x4F60;&#x6DFB;&#x52A0;&#x5B8C;&#x8BE5;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#xFF0C;&#x8FD0;&#x884C;&#x7528;&#x6237;&#x7A0B;&#x5E8F;<code>trace</code>&#x8FD0;&#x884C;&#x6B63;&#x786E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre><code class="lang-bash">/* &#x4E00;&#x5927;&#x6CE2;&#x8F93;&#x51FA; &#x2026;&#x2026; */
+
+xv6 kernel is booting
+
+hart 2 starting
+hart 1 starting
+init: starting sh
+$
+
+/* &#x4F8B;&#x5B50;1&#xFF0C;&#x624B;&#x52A8;&#x8F93;&#x5165;:trace 32 grep hello README */
+
+$ trace 32 grep hello README
+3: sys_<span class="hljs-built_in">read</span>(3) -&gt; 1023
+3: sys_<span class="hljs-built_in">read</span>(3) -&gt; 966
+3: sys_<span class="hljs-built_in">read</span>(3) -&gt; 70
+3: sys_<span class="hljs-built_in">read</span>(3) -&gt; 0
+$
+
+/* &#x4F8B;&#x5B50;2&#xFF0C;&#x624B;&#x52A8;&#x8F93;&#x5165;:trace 2147483647 grep hello README */
+
+$ trace 2147483647 grep hello README
+4: sys_trace(2147483647) -&gt; 0
+4: sys_<span class="hljs-built_in">exec</span>(12240) -&gt; 3
+4: sys_open(12240) -&gt; 3
+4: sys_<span class="hljs-built_in">read</span>(3) -&gt; 1023
+4: sys_<span class="hljs-built_in">read</span>(3) -&gt; 966
+4: sys_<span class="hljs-built_in">read</span>(3) -&gt; 70
+4: sys_<span class="hljs-built_in">read</span>(3) -&gt; 0
+4: sys_close(3) -&gt; 0
+$
+
+/* &#x4F8B;&#x5B50;3&#xFF0C;&#x624B;&#x52A8;&#x8F93;&#x5165;:grep hello README */
+
+$ grep hello README
+$
+
+/* &#x4F8B;&#x5B50;4&#xFF0C;&#x624B;&#x52A8;&#x8F93;&#x5165;:trace 2 usertests forkforkfork */
+
+$ trace 2 usertests forkforkfork
+usertests starting
+<span class="hljs-built_in">test</span> forkforkfork: 407: syscall fork -&gt; 408
+408: sys_fork(-1) -&gt; 409
+409: sys_fork(-1) -&gt; 410
+410: sys_fork(-1) -&gt; 411
+409: sys_fork(-1) -&gt; 412
+410: sys_fork(-1) -&gt; 413
+409: sys_fork(-1) -&gt; 414
+411: sys_fork(-1) -&gt; 415
+</code></pre>
+<h3 id="22-&#x4EFB;&#x52A1;2-&#x6DFB;&#x52A0;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;sysinfo">2.2 &#x4EFB;&#x52A1;2: &#x6DFB;&#x52A0;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;sysinfo</h3>
+<p>&#x5728;&#x8BE5;&#x4EFB;&#x52A1;&#x4E2D;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x52A0;&#x5165;&#x4E00;&#x6761;&#x65B0;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x53EB;&#x505A;sysinfo&#x3002;&#x8BE5;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5C06;&#x6536;&#x96C6;xv6&#x8FD0;&#x884C;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#x3002; sysinfo&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x7ED3;&#x6784;&#x4F53; sysinfo&#x7684;&#x6307;&#x9488;&#xFF0C; &#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x5728;kernel/sysinfo.h &#x53EF;&#x4EE5;&#x627E;&#x5230;&#x3002;xv6&#x5185;&#x6838;&#x7684;&#x5DE5;&#x4F5C;&#x5C31;&#x662F;&#x628A;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x586B;&#x4E0A;&#x5E94;&#x6709;&#x7684;&#x6570;&#x503C;&#x3002;&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x7ED3;&#x6784;&#x4F53;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#x7684;&#x542B;&#x4E49;</p>
+<pre><code class="lang-c"> <span class="hljs-number">1</span>  <span class="hljs-keyword">struct</span> sysinfo {
+ <span class="hljs-number">2</span>    uint64 freemem;   <span class="hljs-comment">// amount of free memory (bytes)</span>
+ <span class="hljs-number">3</span>    uint64 nproc;     <span class="hljs-comment">// number of process</span>
+ <span class="hljs-number">4</span>    uint64 freefd;    <span class="hljs-comment">// number of free file descriptor</span>
+ <span class="hljs-number">5</span>  };
+</code></pre>
+<pre><code>freemem&#xFF1A;&#x5F53;&#x524D;&#x5269;&#x4F59;&#x7684;&#x5185;&#x5B58; &#x5B57;&#x8282; &#x6570;
+nproc&#xFF1A; &#x72B6;&#x6001;&#x4E3A;UNUSED &#x7684;&#x8FDB;&#x7A0B;&#x4E2A;&#x6570;
+freefd&#xFF1A;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x53EF;&#x7528;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x5373; &#x5C1A;&#x672A;&#x4F7F;&#x7528; &#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x6570;&#x91CF;
+</code></pre><p>&#x5B9E;&#x9A8C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;sysinfotest&#x7528;&#x6237;&#x7EA7;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF08;&#x89C1;user/sysinfotest.c&#xFF09;&#xFF0C;&#x4F9D;&#x6B21;&#x6D4B;&#x8BD5;&#x5269;&#x4F59;&#x7684;&#x5185;&#x5B58;&#x5B57;&#x8282;&#x6570;&#x3001;UNUSED&#x7684;&#x8FDB;&#x7A0B;&#x4E2A;&#x6570;&#x3001;&#x672A;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x6570;&#x91CF;&#x3002;</p>
+<p>&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x540E;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;xv6&#x4E2D;&#x8FD0;&#x884C;sysinfotest&#x7A0B;&#x5E8F;&#xFF0C;&#x901A;&#x8FC7;&#x6D4B;&#x8BD5;&#x4F1A;&#x663E;&#x793A;&#x5982;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code class="lang-bash">$ sysinfotest
+sysinfotest: start
+sysinfotest: OK
+</code></pre>
+
                                 
                                 </section>
                             
@@ -307,7 +409,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LAB2","level":"1.7","depth":1,"next":{"title":"LAB3","level":"1.8","depth":1,"path":"LAB3/README.md","ref":"./LAB3/README.md","articles":[]},"previous":{"title":"LAB1","level":"1.6","depth":1,"path":"LAB1/README.md","ref":"./LAB1/README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"LAB2/README.md","mtime":"2024-09-03T04:55:51.915Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-04T03:47:08.510Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LAB2","level":"1.7","depth":1,"next":{"title":"LAB3","level":"1.8","depth":1,"path":"LAB3/README.md","ref":"./LAB3/README.md","articles":[]},"previous":{"title":"LAB1","level":"1.6","depth":1,"path":"LAB1/README.md","ref":"./LAB1/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"LAB2/README.md","mtime":"2024-10-07T19:02:49.299Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-10-07T19:03:03.241Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
